@@ -22,7 +22,6 @@
 
     public ProcessValue(id: string, value: any): void
     {
-        console.log(id);
         this[id] = value;
         this.CreateAndBindDisplayValue();
     }
