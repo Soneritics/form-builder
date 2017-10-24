@@ -56,12 +56,13 @@
     <TypeScriptSourceRoot />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="example\app.js" />
     <Content Include="example\example.css" />
     <Content Include="example\index.html" />
     <Content Include="packages.config" />
+    <Content Include="src\.gitignore" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="example\app.ts" />
     <TypeScriptCompile Include="src\Elements\AbstractFormElement.ts" />
     <TypeScriptCompile Include="src\Elements\FormElementText.ts" />
     <TypeScriptCompile Include="src\Modules\ConsoleLogger.ts" />
