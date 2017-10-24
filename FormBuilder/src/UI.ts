@@ -16,14 +16,27 @@
     public Build(repository: Repository): void
     {
         this.Clear();
-        for (var element of repository.formElements) {
-            this.AddElement(element);
+        for (var i in repository.formElements) {
+            this.AddElement(repository.formElements[i], Number(i));
         }
+
+        $(this._container).sortable();
     }
 
-    private AddElement(element: AbstractFormElement): void
+    public GetElementOrder(): Number[]
     {
-        var row = $('<div class="row draggable"><div class="container"><div class="row wysiwyg"></div><div class="row options"></div></div></div>');
+        var result: Number[] = [];
+
+        $(this._container).find('.draggable').each(function () {
+            result.push(Number($(this).data('index')));
+        });
+
+        return result;
+    }
+
+    private AddElement(element: AbstractFormElement, repositoryIndex: number): void
+    {
+        var row = $('<div class="row draggable" data-index="' + repositoryIndex + '"><div class="container"><div class="row wysiwyg"></div><div class="row options"></div></div></div>');
 
         if (element.HasLabel) {
             $(row).find('.wysiwyg').html('<div class="col-4"><div class="row"><div class="col-1 toggler"></div><div class="col label"></div></div></div><div class="col-sm-7 value"></div>');

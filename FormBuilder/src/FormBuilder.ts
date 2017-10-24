@@ -42,7 +42,8 @@
     public Export(): string
     {
         this._logger.Log('FormBuilder - Exporting');
-        var result = (new Exporter()).Export(this._repository.formElements);
+        var order: Number[] = this._ui.GetElementOrder();
+        var result = (new Exporter()).Export(this._repository.formElements, order);
         this._logger.Log('FormBuilder - Exported');
         return result;
     }

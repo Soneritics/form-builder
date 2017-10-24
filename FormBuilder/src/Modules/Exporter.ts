@@ -1,15 +1,15 @@
 ﻿class Exporter
 {
-    public Export(elements: ISerializable[]): string
+    public Export(elements: ISerializable[], order: Number[]): string
     {
-        console.log(this.GetSerializedItems(elements));
-        return JSON.stringify(this.GetSerializedItems(elements), this.escapeJSON);
+        return JSON.stringify(this.GetSerializedItems(elements, order), this.escapeJSON);
     }
 
-    private GetSerializedItems(elements: ISerializable[]): Array<{ [id: string]: string }> {
+    private GetSerializedItems(elements: ISerializable[], order: Number[]): Array<{ [id: string]: string }> {
         var result = [];
 
-        for (var element of elements) {
+        for (var i of order) {
+            var element = elements[i.toString()];
             result.push(element.Serialize());
         }
 
