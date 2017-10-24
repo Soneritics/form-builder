@@ -57,12 +57,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="example\example.css" />
+    <Content Include="example\FormBuilder.css" />
     <Content Include="example\index.html" />
     <Content Include="src\.gitignore" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="example\app.ts" />
     <TypeScriptCompile Include="src\Elements\AbstractFormElement.ts" />
+    <TypeScriptCompile Include="src\Elements\ElementProperties.ts" />
+    <TypeScriptCompile Include="src\Elements\FormElementTextArea.ts" />
+    <TypeScriptCompile Include="src\Elements\FormElementTextInput.ts" />
     <TypeScriptCompile Include="src\Elements\FormElementText.ts" />
     <TypeScriptCompile Include="src\Modules\ConsoleLogger.ts" />
     <TypeScriptCompile Include="src\Components\EventHandler.ts" />
