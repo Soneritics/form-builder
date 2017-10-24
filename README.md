@@ -13,4 +13,4 @@ You can easily write your own, and more will be added in the future.
 
 Screenshot
 ---
-![Screenshot](Screenshot.png)
+![Screenshot](screenshot.png)
