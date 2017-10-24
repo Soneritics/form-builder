@@ -15,6 +15,7 @@
         this._logger.Log('FormBuilder - Constructing');
 
         if (formElements !== undefined && formElements.length > 0) {
+            this._logger.Log('FormBuilder - Loading form elements');
             this._repository.formElements = formElements;
         }
 
