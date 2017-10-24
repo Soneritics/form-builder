@@ -1,7 +1,7 @@
 ﻿body {
-    font-family: 'Segoe UI', sans-serif;
+    background-color: silver;
 }
 
-span {
-    font-style: italic;
+#content {
+    background-color: #fff;
 }
