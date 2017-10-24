@@ -14,6 +14,10 @@
         return this._binding;
     }
 
+    public New(): AbstractFormElement {
+        return new FormElementTextArea();
+    }
+
     public Serialize(): { [id: string]: string }
     {
         return {

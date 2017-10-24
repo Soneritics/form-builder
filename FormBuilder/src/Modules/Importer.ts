@@ -24,7 +24,7 @@
     {
         for (var element of this.AvailableElements) {
             if (element.Type === type) {
-                return element;
+                return element.New();
             }
         }
 

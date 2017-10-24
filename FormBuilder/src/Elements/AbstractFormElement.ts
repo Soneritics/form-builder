@@ -12,6 +12,7 @@
     private _label;
 
     abstract CreateAndBindDisplayValue();
+    abstract New(): AbstractFormElement;
 
     constructor(data?: { [id: string]: string })
     {
