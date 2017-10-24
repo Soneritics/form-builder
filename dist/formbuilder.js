@@ -1,3 +1,8 @@
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var Repository = (function () {
     function Repository() {
         this._formElements = new Array();
@@ -25,6 +30,18 @@ var AbstractFormElement = (function () {
     }
     return AbstractFormElement;
 }());
+var FormElementText = (function (_super) {
+    __extends(FormElementText, _super);
+    function FormElementText() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    FormElementText.prototype.Serialize = function () {
+        return { type: 'text' };
+    };
+    FormElementText.prototype.Deserialize = function (data) {
+    };
+    return FormElementText;
+}(AbstractFormElement));
 var FormBuilder = (function () {
     function FormBuilder(ui, logger, formElements) {
         this._repository = new Repository();
@@ -39,6 +56,12 @@ var FormBuilder = (function () {
         }
         this._logger.Log('FormBuilder - Constructed');
     }
+    FormBuilder.prototype.Add = function (element) {
+        this._logger.Log('FormBuilder - Adding element:');
+        this._logger.Log(element);
+        this._repository.Add(element);
+        this._logger.Log('FormBuilder - Element added');
+    };
     FormBuilder.prototype.Import = function (elements) {
         this._logger.Log('FormBuilder - Importing');
         this._repository.formElements = (new Importer()).Import(elements);

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "system",
     "noImplicitAny": true,
-    "outFile": "dist/formbuilder.js",
+    "outFile": "../dist/formbuilder.js",
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,

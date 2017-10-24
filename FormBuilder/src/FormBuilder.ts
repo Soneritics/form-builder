@@ -21,6 +21,14 @@
         this._logger.Log('FormBuilder - Constructed');
     }
 
+    public Add(element: AbstractFormElement): void
+    {
+        this._logger.Log('FormBuilder - Adding element:');
+        this._logger.Log(element);
+        this._repository.Add(element);
+        this._logger.Log('FormBuilder - Element added');
+    }
+
     public Import(elements: any[]): void
     {
         this._logger.Log('FormBuilder - Importing');
