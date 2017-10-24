@@ -1,0 +1,14 @@
+﻿.wysiwyg {
+    background-color: #efefef;
+    border-bottom: 1px solid silver;
+    padding: 5px 0;
+}
+
+.options {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #808080;
+}
+
+.options .row {
+    padding: 5px;
+}
