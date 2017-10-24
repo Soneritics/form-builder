@@ -8,8 +8,8 @@
     private GetSerializedItems(elements: ISerializable[]): any {
         var result = [];
 
-        for (var i in elements) {
-            result.push(elements[i].Serialize());
+        for (var element of elements) {
+            result.push(element.Serialize());
         }
 
         return result;
