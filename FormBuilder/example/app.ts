@@ -1,28 +1,9 @@
-﻿class Greeter {
-    element: HTMLElement;
-    span: HTMLElement;
-    timerToken: number;
-
-    constructor(element: HTMLElement) {
-        this.element = element;
-        this.element.innerHTML += "The time is: ";
-        this.span = document.createElement('span');
-        this.element.appendChild(this.span);
-        this.span.innerText = new Date().toUTCString();
-    }
-
-    start() {
-        this.timerToken = setInterval(() => this.span.innerHTML = new Date().toUTCString(), 500);
-    }
-
-    stop() {
-        clearTimeout(this.timerToken);
-    }
-
-}
+﻿/// <reference path="../src/ui.ts" />
+/// <reference path="../src/formbuilder.ts" />
+/// <reference path="../src/modules/consolelogger.ts" />
 
 window.onload = () => {
-    var el = $('#content')[0];
-    var greeter = new Greeter(el);
-    greeter.start();
+    var ui = new UI(document.getElementById('container'));
+    var logger = new ConsoleLogger();
+    var formbuilder = new FormBuilder(ui, logger);
 };

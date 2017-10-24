@@ -56,6 +56,7 @@
     <TypeScriptSourceRoot />
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="dist\formbuilder.js" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -64,7 +65,17 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="example\app.ts" />
+    <TypeScriptCompile Include="src\Elements\AbstractFormElement.ts" />
+    <TypeScriptCompile Include="src\Modules\ConsoleLogger.ts" />
+    <TypeScriptCompile Include="src\Modules\Exporter.ts" />
+    <TypeScriptCompile Include="src\FormBuilder.ts" />
+    <TypeScriptCompile Include="src\Modules\Importer.ts" />
+    <TypeScriptCompile Include="src\Modules\NullLogger.ts" />
+    <TypeScriptCompile Include="src\Roles\ILogger.ts" />
+    <TypeScriptCompile Include="src\Roles\ISerializable.ts" />
+    <TypeScriptCompile Include="src\Components\Repository.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="src\UI.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -74,6 +85,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
+    <Content Include="tsconfig.json" />
+    <Content Include="dist\formbuilder.js.map" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
