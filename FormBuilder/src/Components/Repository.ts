@@ -1,6 +1,7 @@
 ﻿class Repository
 {
     private _formElements: AbstractFormElement[] = new Array<AbstractFormElement>();
+    public Events: EventHandler = new EventHandler();
 
     get formElements(): AbstractFormElement[]
     {
@@ -10,12 +11,12 @@
     set formElements(elements: AbstractFormElement[])
     {
         this._formElements = elements;
-        // todo: handlers?
+        this.Events.Trigger('change');
     }
 
     public Add(element: AbstractFormElement): void
     {
         this._formElements.push(element);
-        // todo: handlers?
+        this.Events.Trigger('change');
     }
 }

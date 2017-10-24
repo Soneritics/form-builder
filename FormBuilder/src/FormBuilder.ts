@@ -13,6 +13,7 @@
         this._ui = ui;
 
         this._logger.Log('FormBuilder - Constructing');
+        this._repository.Events.On('change', (data?: any) => this.OnRepositoryChange(data));
 
         if (formElements !== undefined && formElements.length > 0) {
             this._logger.Log('FormBuilder - Loading form elements');
@@ -43,5 +44,11 @@
         var result = (new Exporter()).Export(this._repository.formElements);
         this._logger.Log('FormBuilder - Exported');
         return result;
+    }
+
+    private OnRepositoryChange(data?: any): void
+    {
+        this._logger.Log('FormBuilder - OnRepositoryChange');
+        this._logger.Log(data);
     }
 }

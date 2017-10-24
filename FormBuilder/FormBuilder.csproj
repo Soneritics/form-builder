@@ -56,12 +56,16 @@
     <TypeScriptSourceRoot />
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="example\app.js" />
+    <Content Include="example\example.css" />
+    <Content Include="example\index.html" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\Elements\AbstractFormElement.ts" />
     <TypeScriptCompile Include="src\Elements\FormElementText.ts" />
     <TypeScriptCompile Include="src\Modules\ConsoleLogger.ts" />
+    <TypeScriptCompile Include="src\Components\EventHandler.ts" />
     <TypeScriptCompile Include="src\Modules\Exporter.ts" />
     <TypeScriptCompile Include="src\FormBuilder.ts" />
     <TypeScriptCompile Include="src\Modules\Importer.ts" />
@@ -80,7 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
-    <Content Include="tsconfig.json" />
+    <Content Include="release.tsconfig.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
