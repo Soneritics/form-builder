@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Form Builder</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="example.css" type="text/css" />
+    
+    <script src="../src/Components/EventHandler.js"></script>
+    <script src="../src/Components/Repository.js"></script>
+    <script src="../src/Elements/AbstractFormElement.js"></script>
+    <script src="../src/Modules/ConsoleLogger.js"></script>
+    <script src="../src/Modules/NullLogger.js"></script>
+    <script src="../src/Modules/Importer.js"></script>
+    <script src="../src/Modules/Exporter.js"></script>
+    <script src="../src/Roles/ILogger.js"></script>
+    <script src="../src/Roles/ISerializable.js"></script>
+    <script src="../src/FormBuilder.js"></script>
+    <script src="../src/UI.js"></script>
+
+    <script src="../src/Elements/FormElementText.js"></script>
+
+    <script src="app.js"></script>
+</head>
+<body>
+    <div class="container"><div class="row"><h1>Form Builder</h1></div></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-8">Add elements</div>
+        </div>
+
+        <div class="row">
+            <div id="content" class="col-md-8">&nbsp;</div>
+            <div class="col-md-4">
+                <p><a href="javascript:;" id="button-text" class="btn btn-primary btn-block"><i class="fa fa-comment-o"></i> Text</a></p>
+                <p><a href="javascript:;" id="button-pageend" class="btn btn-primary btn-block"><i class="fa fa-panes"></i> Page end</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
