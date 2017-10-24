@@ -4,11 +4,13 @@ window.onload = function () {
     var formbuilder = new FormBuilder(ui, logger);
     // Buttons to create form elements
     $('#button-text').on('click', function () { formbuilder.Add(new FormElementText()); });
+    $('#button-textinput').on('click', function () { formbuilder.Add(new FormElementTextInput()); });
     // Serialize/deserialize
     $('#serialize').on('click', function () { $('#serialized').text(formbuilder.Export()); });
     $('#deserialize').on('click', function () {
         var formElements = [
-            new FormElementText()
+            new FormElementText(),
+            new FormElementTextInput()
         ];
         formbuilder.Import(JSON.parse($('#deserialize-content').val()), formElements);
     });

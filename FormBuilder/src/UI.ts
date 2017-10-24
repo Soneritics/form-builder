@@ -27,7 +27,7 @@
 
         if (element.HasLabel) {
             $(row).find('.wysiwyg').html('<div class="col-4"><div class="row"><div class="col-1 toggler"></div><div class="col label"></div></div></div><div class="col-sm-7 value"></div>');
-            $(row).find('.label').text(element.Label);
+            element.SetLabel($(row).find('.label'));
         } else {
             $(row).find('.wysiwyg').html('<div class="col-1 toggler"></div><div class="col value"></div>');
         }
@@ -62,11 +62,11 @@
 
             switch (property.Component) {
                 case 'text':
-                    var component = $('<input class="form-control" type="text" id="formbuilder-binding-' + ++this._bindingId + '">');
+                    var component = $('<input class="form-control component" type="text" id="formbuilder-binding-' + ++this._bindingId + '">');
                     break;
 
                 case 'textarea':
-                    var component = $('<textarea class="form-control" id="formbuilder-binding-' + ++this._bindingId + '"></textarea>');
+                    var component = $('<textarea class="form-control component" id="formbuilder-binding-' + ++this._bindingId + '"></textarea>');
                     break;
             }
 
@@ -74,9 +74,17 @@
                 $(component).val(values[property.Id]);
             }
 
+            $(component).data('property-id', property.Id);
+
             $(item).find('.formbuilder-optioncontent').append(component);
-            $(item).find('.formbuilder-optioncontent').on('keyup', function () {
-                element.ProcessValue(property.Id, $(component).val());
+            $(component).on('keyup', () => {
+                $(result).find('.component').each(function () {
+                    element.ProcessValue($(this).data('property-id'), $(this).val());
+                });
+
+                if (element.HasLabel) {
+                    element.UpdateLabel();
+                }
             });
             $(result).append(item);
         }

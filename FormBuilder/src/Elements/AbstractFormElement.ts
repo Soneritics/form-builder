@@ -6,9 +6,10 @@
     abstract Type: string;
     abstract Name: string;
     abstract Properties: ElementProperties[];
-    public Label: string = '';
+    public Label: string = 'Label';
     public HasLabel: boolean = true;
     protected _binding = $('<span></span>');
+    private _label;
 
     abstract CreateAndBindDisplayValue();
 
@@ -21,8 +22,20 @@
 
     public ProcessValue(id: string, value: any): void
     {
+        console.log(id);
         this[id] = value;
         this.CreateAndBindDisplayValue();
+    }
+
+    public SetLabel(label)
+    {
+        this._label = label;
+        this.UpdateLabel();
+    }
+
+    public UpdateLabel()
+    {
+        $(this._label).text(this.Label);
     }
 
     public GetDefaultProperties(): ElementProperties[]

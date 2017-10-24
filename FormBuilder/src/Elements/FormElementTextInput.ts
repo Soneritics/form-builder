@@ -1,16 +1,16 @@
-﻿class FormElementText extends AbstractFormElement
+﻿class FormElementTextInput extends AbstractFormElement
 {
-    public Type: string = 'FormElementText';
+    public Type: string = 'FormElementTextInput';
     public Name: string;
-    public HasLabel: boolean = false;
     public Properties: ElementProperties[] = [
-        new ElementProperties('Value', 'Text', 'textarea')
+        new ElementProperties('Placeholder', 'Placeholder', 'text')
     ];
-    public Value: string = "Place text here";
+    public Placeholder: string = "";
 
     public CreateAndBindDisplayValue()
     {
-        this._binding.text(this.Value);
+        this._binding.html('<input type="text">');
+        this._binding.find('input').attr('placeholder', this.Placeholder);
         return this._binding;
     }
 
@@ -20,7 +20,7 @@
             Type: this.Type,
             Name: this.Name,
             Label: this.Label,
-            Value: this.Value
+            Placeholder: this.Placeholder
         };
     }
 
@@ -34,8 +34,8 @@
             this.Label = data['Label'];
         }
 
-        if (data['Value'] !== undefined) {
-            this.Value = data['Value'];
+        if (data['Placeholder'] !== undefined) {
+            this.Placeholder = data['Placeholder'];
         }
     }
 
