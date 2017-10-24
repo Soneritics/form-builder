@@ -45,8 +45,37 @@
         $(this._container).append(row);
     }
 
-    private GetOptionsForm(element): string
+    private GetOptionsForm(element: AbstractFormElement): string
     {
-        return 'Just a test for the options';
+        var properties = element.GetDefaultProperties().concat(element.Properties);
+
+        if (properties.length === 0) {
+            return 'There are no properties for this element.';
+        }
+
+        var values = element.Serialize();
+        var result = '<div class="container">';
+        for (var property of properties) {
+            result += '<div class="row"><div class="col-5">' + property.Label + '</div><div class="col">';
+
+            switch (property.Component) {
+                case 'text':
+                    var component = '<input class="form-control" type="text">';
+                    break;
+
+                case 'textarea':
+                    var component = '<textarea class="form-control"></textarea>';
+                    break;
+            }
+
+            if (values[property.Label] !== undefined && values[property.Label] != null) {
+                $(component).val(values[property.Label]);
+            }
+
+            result += component;
+            result += '</div></div>';
+        }
+
+        return result + '</div>';
     }
 }
