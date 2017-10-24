@@ -8,8 +8,9 @@
     abstract Properties: ElementProperties[];
     public Label: string = '';
     public HasLabel: boolean = true;
+    protected _binding = $('<span></span>');
 
-    abstract getValueHtml(): string;
+    abstract CreateAndBindDisplayValue();
 
     constructor(data?: { [id: string]: string })
     {
@@ -21,6 +22,7 @@
     public ProcessValue(id: string, value: any): void
     {
         this[id] = value;
+        this.CreateAndBindDisplayValue();
     }
 
     public GetDefaultProperties(): ElementProperties[]

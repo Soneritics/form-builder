@@ -8,9 +8,10 @@
     ];
     public Value: string = "Place text here";
 
-    public getValueHtml(): string
+    public CreateAndBindDisplayValue()
     {
-        return $('<span></span>').text(this.Value).html();
+        this._binding.text(this.Value);
+        return this._binding;
     }
 
     public Serialize(): { [id: string]: string }

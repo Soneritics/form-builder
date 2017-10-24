@@ -32,7 +32,7 @@
             $(row).find('.wysiwyg').html('<div class="col-1 toggler"></div><div class="col value"></div>');
         }
 
-        $(row).find('.value').html(element.getValueHtml());
+        $(row).find('.value').append(element.CreateAndBindDisplayValue());
         $(row).find('.toggler').html('<a href="javascript:;"><i class="fa fa-arrow-circle-down"></i></a>').find('a').on('click', function () {
             var element = $(this);
             do {
