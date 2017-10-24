@@ -48,7 +48,8 @@
 
     private OnRepositoryChange(data?: any): void
     {
-        this._logger.Log('FormBuilder - OnRepositoryChange');
+        this._logger.Log('FormBuilder - OnRepositoryChange, building UI');
+        this._ui.Build(this._repository);
         this._logger.Log(data);
     }
 }

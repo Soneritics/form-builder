@@ -3,6 +3,13 @@
     abstract Serialize(): any;
     abstract Deserialize(data: any): void;
 
+    abstract Type: string;
+    abstract Name: string;
+    public Label: string = '';
+    public HasLabel: boolean = true;
+
+    abstract getValueHtml(): string;
+
     constructor(data?: any)
     {
         if (data !== undefined && data != null) {
