@@ -2,7 +2,8 @@
 {
     public Type: string = 'text';
     public Name: string;
-    public Label: string = 'Testlabel';
+    public Label: string = 'Label';
+    public Properties: ElementProperties[] = [];
 
     public getValueHtml(): string
     {

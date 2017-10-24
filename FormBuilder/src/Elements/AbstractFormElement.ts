@@ -5,6 +5,7 @@
 
     abstract Type: string;
     abstract Name: string;
+    abstract Properties: ElementProperties[];
     public Label: string = '';
     public HasLabel: boolean = true;
 
