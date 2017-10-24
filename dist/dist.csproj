@@ -64,6 +64,7 @@
   <ItemGroup>
     <Content Include="example\app.js" />
     <Content Include="example\example.css" />
+    <Content Include="example\FormBuilder.css" />
     <Content Include="example\index.html" />
     <Content Include="formbuilder.js" />
   </ItemGroup>
