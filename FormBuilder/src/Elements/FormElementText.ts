@@ -10,6 +10,7 @@
 
     public CreateAndBindDisplayValue()
     {
+        this._binding.css('white-space', 'pre');
         this._binding.text(this.Value);
         return this._binding;
     }
