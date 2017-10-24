@@ -4,7 +4,7 @@
     public Name: string;
     public HasLabel: boolean = false;
     public Properties: ElementProperties[] = [
-        new ElementProperties('Text', 'textarea')
+        new ElementProperties('Value', 'Text', 'textarea')
     ];
     public Value: string = "Place text here";
 

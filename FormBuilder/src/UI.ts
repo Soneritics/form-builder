@@ -1,6 +1,7 @@
 ﻿class UI
 {
     private _container: HTMLElement;
+    private _bindingId: number = 0;
 
     constructor(container: HTMLElement)
     {
@@ -41,11 +42,11 @@
             element.next('.options').slideToggle(500);
         });
 
-        $(row).find('.options').html(this.GetOptionsForm(element)).slideUp(0);
+        $(row).find('.options').append(this.GetOptionsForm(element)).slideUp(0);
         $(this._container).append(row);
     }
 
-    private GetOptionsForm(element: AbstractFormElement): string
+    private GetOptionsForm(element: AbstractFormElement)
     {
         var properties = element.GetDefaultProperties().concat(element.Properties);
 
@@ -54,28 +55,32 @@
         }
 
         var values = element.Serialize();
-        var result = '<div class="container">';
+        var result = $('<div class="container"></div>');
+
         for (var property of properties) {
-            result += '<div class="row"><div class="col-4">' + property.Label + '</div><div class="col">';
+            var item = $('<div class="row"><div class="col-4">' + property.Label + '</div><div class="col formbuilder-optioncontent"></div></div>');
 
             switch (property.Component) {
                 case 'text':
-                    var component = '<input class="form-control" type="text">';
+                    var component = $('<input class="form-control" type="text" id="formbuilder-binding-' + ++this._bindingId + '">');
                     break;
 
                 case 'textarea':
-                    var component = '<textarea class="form-control"></textarea>';
+                    var component = $('<textarea class="form-control" id="formbuilder-binding-' + ++this._bindingId + '"></textarea>');
                     break;
             }
 
-            if (values[property.Label] !== undefined && values[property.Label] != null) {
-                $(component).val(values[property.Label]);
+            if (values[property.Id] !== undefined && values[property.Id] != null) {
+                $(component).val(values[property.Id]);
             }
 
-            result += component;
-            result += '</div></div>';
+            $(item).find('.formbuilder-optioncontent').append(component);
+            $(item).find('.formbuilder-optioncontent').on('keyup', function () {
+                element.ProcessValue(property.Id, $(component).val());
+            });
+            $(result).append(item);
         }
 
-        return result + '</div>';
+        return result;
     }
 }

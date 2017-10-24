@@ -18,14 +18,19 @@
         }
     }
 
+    public ProcessValue(id: string, value: any): void
+    {
+        this[id] = value;
+    }
+
     public GetDefaultProperties(): ElementProperties[]
     {
         var result: ElementProperties[] = [
-            new ElementProperties('Name', 'text'),
+            new ElementProperties('Name', 'Name', 'text'),
         ];
 
         if (this.HasLabel) {
-            result.push(new ElementProperties('Label', 'text'));
+            result.push(new ElementProperties('Label', 'Label', 'text'));
         }
 
         return result;
