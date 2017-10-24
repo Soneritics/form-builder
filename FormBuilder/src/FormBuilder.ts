@@ -31,10 +31,11 @@
         this._logger.Log('FormBuilder - Element added');
     }
 
-    public Import(elements: any[]): void
+    public Import(elements: Array<{ [id: string]: string }>, availableElements: AbstractFormElement[]): void
     {
         this._logger.Log('FormBuilder - Importing');
-        this._repository.formElements = (new Importer()).Import(elements);
+        this._repository.formElements = (new Importer(availableElements)).Import(elements);
+        this._ui.Build(this._repository);
         this._logger.Log('FormBuilder - Imported');
     }
 

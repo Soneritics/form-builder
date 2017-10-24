@@ -1,5 +1,5 @@
 ﻿interface ISerializable
 {
-    Serialize(): any;
-    Deserialize(data: any): void;
+    Serialize(): { [id: string]: string };
+    Deserialize(data: { [id: string]: string }): void;
 }

@@ -1,11 +1,12 @@
 ﻿class Exporter
 {
-    Export(elements: ISerializable[]): string
+    public Export(elements: ISerializable[]): string
     {
-        return JSON.parse(JSON.stringify(elements, this.escapeJSON));
+        console.log(this.GetSerializedItems(elements));
+        return JSON.stringify(this.GetSerializedItems(elements), this.escapeJSON);
     }
 
-    private GetSerializedItems(elements: ISerializable[]): any {
+    private GetSerializedItems(elements: ISerializable[]): Array<{ [id: string]: string }> {
         var result = [];
 
         for (var element of elements) {

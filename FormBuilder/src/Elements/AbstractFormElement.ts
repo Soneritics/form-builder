@@ -1,7 +1,7 @@
 ﻿abstract class AbstractFormElement implements ISerializable
 {
     abstract Serialize(): any;
-    abstract Deserialize(data: any): void;
+    abstract Deserialize(data: { [id: string]: string }): void;
 
     abstract Type: string;
     abstract Name: string;
@@ -11,10 +11,23 @@
 
     abstract getValueHtml(): string;
 
-    constructor(data?: any)
+    constructor(data?: { [id: string]: string })
     {
         if (data !== undefined && data != null) {
             this.Deserialize(data);
         }
+    }
+
+    public GetDefaultProperties(): ElementProperties[]
+    {
+        var result: ElementProperties[] = [
+            new ElementProperties('Name', 'text'),
+        ];
+
+        if (this.HasLabel) {
+            result.push(new ElementProperties('Label', 'text'));
+        }
+
+        return result;
     }
 }

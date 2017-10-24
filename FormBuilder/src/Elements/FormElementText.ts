@@ -1,24 +1,37 @@
 ﻿class FormElementText extends AbstractFormElement
 {
-    public Type: string = 'text';
+    public Type: string = 'FormElementText';
     public Name: string;
-    public Label: string = 'Label';
-    public Properties: ElementProperties[] = [];
+    public HasLabel: boolean = false;
+    public Properties: ElementProperties[] = [
+        new ElementProperties('Text', 'textarea')
+    ];
+    public Value: string = "Place text here";
 
     public getValueHtml(): string
     {
-        return '<input type="text">';
+        return $('<span></span>').text(this.Value).html();
     }
 
-    public Serialize(): any
+    public Serialize(): { [id: string]: string }
     {
-        // todo
-        return { type: 'text' };
+        return {
+            Type: this.Type,
+            Name: this.Name,
+            Label: this.Label,
+            Value: this.Value
+        };
     }
 
-    public Deserialize(data: any): void
+    public Deserialize(data: { [id: string]: string }): void
     {
-        // todo
+        if (data['Name'] !== undefined) {
+            this.Name = data['Name'];
+        }
+
+        if (data['Label'] !== undefined) {
+            this.Label = data['Label'];
+        }
     }
 
 }
