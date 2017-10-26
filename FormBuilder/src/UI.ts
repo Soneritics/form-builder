@@ -1,6 +1,7 @@
 ﻿class UI
 {
     private _container: HTMLElement;
+    public Events: EventHandler = new EventHandler();
     private _bindingId: number = 0;
 
     constructor(container: HTMLElement)
@@ -20,7 +21,7 @@
             this.AddElement(repository.formElements[i], Number(i));
         }
 
-        $(this._container).sortable();
+        $(this._container).sortable({ stop: () => this.Events.Trigger('orderchange') });
     }
 
     public GetElementOrder(): Number[]

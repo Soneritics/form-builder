@@ -14,6 +14,7 @@
 
         this._logger.Log('FormBuilder - Constructing');
         this._repository.Events.On('change', (data?: any) => this.OnRepositoryChange(data));
+        this._ui.Events.On('orderchange', () => this.OnOrderChange());
 
         if (formElements !== undefined && formElements.length > 0) {
             this._logger.Log('FormBuilder - Loading form elements');
@@ -42,8 +43,7 @@
     public Export(): string
     {
         this._logger.Log('FormBuilder - Exporting');
-        var order: Number[] = this._ui.GetElementOrder();
-        var result = (new Exporter()).Export(this._repository.formElements, order);
+        var result = (new Exporter()).Export(this._repository.formElements);
         this._logger.Log('FormBuilder - Exported');
         return result;
     }
@@ -53,5 +53,20 @@
         this._logger.Log('FormBuilder - OnRepositoryChange, building UI');
         this._ui.Build(this._repository);
         this._logger.Log(data);
+    }
+
+    private OnOrderChange(): void
+    {
+        this._logger.Log('FormBuilder - OnOrderChange');
+
+        var order: Number[] = this._ui.GetElementOrder();
+        var result = [];
+
+        for (var i of order) {
+            var element = this._repository.formElements[i.toString()];
+            result.push(element);
+        }
+
+        this._repository.formElements = result;
     }
 }
