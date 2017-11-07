@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="example\app.ts" />
+    <TypeScriptCompile Include="src\Components\Item.ts" />
+    <TypeScriptCompile Include="src\Components\ItemSerializer.ts" />
     <TypeScriptCompile Include="src\Elements\AbstractFormElement.ts" />
     <TypeScriptCompile Include="src\Elements\ElementProperties.ts" />
     <TypeScriptCompile Include="src\Elements\FormElementPageEnd.ts" />
