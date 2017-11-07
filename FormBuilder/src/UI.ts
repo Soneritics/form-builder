@@ -82,6 +82,11 @@
                 case 'textarea':
                     var component = $('<textarea class="form-control component" id="formbuilder-binding-' + ++this._bindingId + '"></textarea>');
                     break;
+
+                case 'items':
+                    var placeholder = "One value per line, the id and text divided by the pipe symbol.\nFor example, in the case of a date field:\n\nmo|Monday\ntu|Tuesday\nwe|Wednesday\netc.";
+                    var component = $('<textarea class="form-control component" id="formbuilder-binding-' + ++this._bindingId + '" placeholder="' + placeholder + '" style="height:160px;"></textarea>');
+                    break;
             }
 
             if (values[property.Id] !== undefined && values[property.Id] != null) {

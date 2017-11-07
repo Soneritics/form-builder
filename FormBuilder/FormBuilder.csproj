@@ -65,9 +65,14 @@
     <TypeScriptCompile Include="example\app.ts" />
     <TypeScriptCompile Include="src\Elements\AbstractFormElement.ts" />
     <TypeScriptCompile Include="src\Elements\ElementProperties.ts" />
+    <TypeScriptCompile Include="src\Elements\FormElementPageEnd.ts" />
+    <TypeScriptCompile Include="src\Elements\FormElementCheckbox.ts" />
+    <TypeScriptCompile Include="src\Elements\FormElementRadio.ts" />
+    <TypeScriptCompile Include="src\Elements\FormElementSelect.ts" />
+    <TypeScriptCompile Include="src\Elements\FormElementText.ts" />
     <TypeScriptCompile Include="src\Elements\FormElementTextArea.ts" />
     <TypeScriptCompile Include="src\Elements\FormElementTextInput.ts" />
-    <TypeScriptCompile Include="src\Elements\FormElementText.ts" />
+    <TypeScriptCompile Include="src\Elements\FormElementFile.ts" />
     <TypeScriptCompile Include="src\Modules\ConsoleLogger.ts" />
     <TypeScriptCompile Include="src\Components\EventHandler.ts" />
     <TypeScriptCompile Include="src\Modules\Exporter.ts" />

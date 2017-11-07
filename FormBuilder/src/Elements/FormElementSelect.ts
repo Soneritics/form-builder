@@ -2,16 +2,21 @@
 {
     public Type: string = 'FormElementSelect';
     public Name: string;
-    public HasLabel: boolean = false;
+    public HasLabel: boolean = true;
     public Properties: ElementProperties[] = [
-        new ElementProperties('Value', 'Text', 'textarea')
+        new ElementProperties('Value', 'Items', 'items')
     ];
-    public Value: string = "Place text here";
+    public Value: string = "id|value";
 
     public CreateAndBindDisplayValue()
     {
+        var element = $('<select></select>');
+        for (var item of (new ItemSerializer).Serialize(this.Value)) {
+            element.append($('<option></option>').val(item.Id).text(item.Value));
+        }
+
         this._binding.css('white-space', 'pre');
-        this._binding.text(this.Value);
+        this._binding.html('').append(element);
         return this._binding;
     }
 
