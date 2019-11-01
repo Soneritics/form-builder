@@ -4,7 +4,7 @@
     {
         var result = new Array<Item>();
 
-        var lines = content.replace("\r", "").split("\n");
+        var lines = this.replaceAll(content, "\r", "").split("\n");
         if (lines.length > 0) {
             var emptyIds = 0;
             for (var line of lines) {
@@ -23,8 +23,20 @@
         return result;
     }
 
-    public DeserializeText(content: string): string
-    {
-        return content.replace("\\r", "").replace("\\n", "\n");
+    public DeserializeText(content: string): string {
+        console.log("original: " + content);
+        console.log("replaced: " + this.replaceAll(this.replaceAll(content, "\\n", "\n"), "\\r", ""));
+        return this.replaceAll(this.replaceAll(content, "\\n", "\n"), "\\r", "");
+    }
+
+    private replaceAll(content: string, find: string, replace: string): string {
+        var replacement = content;
+        content = "";
+        while (replacement !== content) {
+            content = replacement;
+            replacement = replacement.replace(find, replace);
+        }
+
+        return content;
     }
 }
