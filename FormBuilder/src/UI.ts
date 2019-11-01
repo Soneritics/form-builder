@@ -47,14 +47,24 @@
         }
 
         $(row).find('.value').append(element.CreateAndBindDisplayValue());
-        $(row).find('.toggler').html('<a href="javascript:;"><i class="fa fa-arrow-circle-down"></i></a>').find('a').on('click', function () {
+        $(row).find('.toggler').html('<a href="javascript:;"><span><i class="fa fa-arrow-circle-down"></i></span><span><i class="fa fa-arrow-circle-up"></i></a></span>').find('a').on('click', function () {
             var element = $(this);
             do {
                 element = $(element).parent();
             } while (!$(element).hasClass('wysiwyg'));
 
             element.next('.options').slideToggle(500);
+
+            $(row).find('.toggler > a > span').each(function() {
+                if ($(this).is(':visible')) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
         });
+
+        $(row).find('.toggler > a > span:last-child').hide();
 
         $(row).find('.options').append(this.GetOptionsForm(element)).slideUp(0);
         $(this._container).append(row);
@@ -65,7 +75,7 @@
         var properties = element.GetDefaultProperties().concat(element.Properties);
 
         if (properties.length === 0) {
-            return 'There are no properties for this element.';
+            return $('<em>There are no properties for this element.</em>');
         }
 
         var values = element.Serialize();
@@ -86,6 +96,18 @@
                 case 'items':
                     var placeholder = "One value per line, the id and text divided by the pipe symbol.\nFor example, in the case of a date field:\n\nmo|Monday\ntu|Tuesday\nwe|Wednesday\netc.";
                     var component = $('<textarea class="form-control component" id="formbuilder-binding-' + ++this._bindingId + '" placeholder="' + placeholder + '" style="height:160px;"></textarea>');
+                    break;
+
+                case 'select':
+                    var component = $('<select class="form-control component" id="formbuilder-binding-' + ++this._bindingId + '"></select>');
+
+                    for (var i in property.Items) {
+                        var option = $("<option></option>");
+                        option.text(property.Items[i]);
+                        option.attr("value", i);
+                        $(component).append(option);
+                    }
+
                     break;
             }
 

@@ -22,4 +22,9 @@
 
         return result;
     }
+
+    public DeserializeText(content: string): string
+    {
+        return content.replace("\\r", "").replace("\\n", "\n");
+    }
 }

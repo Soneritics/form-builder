@@ -1,9 +1,9 @@
 ﻿class FormElementPageEnd extends AbstractFormElement
 {
     public Type: string = 'FormElementPageEnd';
-    public Name: string;
     public HasLabel: boolean = false;
     public Properties: ElementProperties[] = [];
+    protected IsScoreElement: boolean = false;
 
     public CreateAndBindDisplayValue()
     {
@@ -19,16 +19,12 @@
     public Serialize(): { [id: string]: string }
     {
         return {
-            Type: this.Type,
-            Name: this.Name
+            Type: this.Type
         };
     }
 
     public Deserialize(data: { [id: string]: string }): void
     {
-        if (data['Name'] !== undefined) {
-            this.Name = data['Name'];
-        }
     }
 
 }

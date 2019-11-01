@@ -3,11 +3,13 @@
     abstract Serialize(): any;
     abstract Deserialize(data: { [id: string]: string }): void;
 
-    abstract Type: string;
-    abstract Name: string;
-    abstract Properties: ElementProperties[];
+    public abstract Type: string;
+
+    public Properties: ElementProperties[];
+    public Score: string;
     public Label: string = 'Label';
     public HasLabel: boolean = true;
+    protected IsScoreElement: boolean = true;
     protected _binding = $('<span></span>');
     private _label;
 
@@ -40,9 +42,11 @@
 
     public GetDefaultProperties(): ElementProperties[]
     {
-        var result: ElementProperties[] = [
-            new ElementProperties('Name', 'Name', 'text'),
-        ];
+        var result: ElementProperties[] = [];
+
+        if (this.IsScoreElement) {
+            result.push(new ElementProperties('Score', 'Scorecategorie', 'select', { een: "een", twee: "twee" }));
+        }
 
         if (this.HasLabel) {
             result.push(new ElementProperties('Label', 'Label', 'text'));

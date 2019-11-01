@@ -1,11 +1,10 @@
 ﻿class FormElementCheckbox extends AbstractFormElement
 {
     public Type: string = 'FormElementCheckbox';
-    public Name: string;
-    public HasLabel: boolean = false;
     public Properties: ElementProperties[] = [
-        new ElementProperties('Options', 'Items', 'items')
+        new ElementProperties('Value', 'Items', 'items')
     ];
+    public Value: string = "id|value";
 
     public CreateAndBindDisplayValue()
     {
@@ -22,15 +21,20 @@
     {
         return {
             Type: this.Type,
-            Name: this.Name,
-            Label: this.Label
+            Score: this.Score,
+            Label: this.Label,
+            Value: this.Value
         };
     }
 
     public Deserialize(data: { [id: string]: string }): void
     {
-        if (data['Name'] !== undefined) {
-            this.Name = data['Name'];
+        if (data['Score'] !== undefined) {
+            this.Score = data['Score'];
+        }
+
+        if (data['Value'] !== undefined) {
+            this.Value = (new ItemSerializer).DeserializeText(data['Value']);
         }
 
         if (data['Label'] !== undefined) {

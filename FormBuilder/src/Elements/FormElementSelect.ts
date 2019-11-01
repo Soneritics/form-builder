@@ -1,7 +1,6 @@
 ﻿class FormElementSelect extends AbstractFormElement
 {
     public Type: string = 'FormElementSelect';
-    public Name: string;
     public HasLabel: boolean = true;
     public Properties: ElementProperties[] = [
         new ElementProperties('Value', 'Items', 'items')
@@ -29,7 +28,7 @@
     {
         return {
             Type: this.Type,
-            Name: this.Name,
+            Score: this.Score,
             Label: this.Label,
             Value: this.Value
         };
@@ -37,8 +36,8 @@
 
     public Deserialize(data: { [id: string]: string }): void
     {
-        if (data['Name'] !== undefined) {
-            this.Name = data['Name'];
+        if (data['Score'] !== undefined) {
+            this.Score = data['Score'];
         }
 
         if (data['Label'] !== undefined) {
@@ -46,7 +45,7 @@
         }
 
         if (data['Value'] !== undefined) {
-            this.Value = data['Value'];
+            this.Value = (new ItemSerializer).DeserializeText(data['Value']);
         }
     }
 

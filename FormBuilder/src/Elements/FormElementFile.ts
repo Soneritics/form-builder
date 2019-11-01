@@ -1,11 +1,11 @@
 ﻿class FormElementFile extends AbstractFormElement
 {
     public Type: string = 'FormElementFile';
-    public Name: string;
+    protected IsScoreElement: boolean = false;
     public Properties: ElementProperties[] = [
         new ElementProperties('AllowedExtensions', 'Allowed file types', 'text')
     ];
-    public AllowedExtensions: string = "doc,docx,pdf";
+    public AllowedExtensions: string = "jpg,jpeg,png";
 
     public CreateAndBindDisplayValue()
     {
@@ -22,7 +22,6 @@
     {
         return {
             Type: this.Type,
-            Name: this.Name,
             Label: this.Label,
             AllowedExtensions: this.AllowedExtensions
         };
@@ -30,10 +29,6 @@
 
     public Deserialize(data: { [id: string]: string }): void
     {
-        if (data['Name'] !== undefined) {
-            this.Name = data['Name'];
-        }
-
         if (data['Label'] !== undefined) {
             this.Label = data['Label'];
         }

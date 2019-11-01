@@ -1,7 +1,7 @@
 ﻿class FormElementTextArea extends AbstractFormElement
 {
     public Type: string = 'FormElementTextInput';
-    public Name: string;
+    protected IsScoreElement: boolean = false;
     public Properties: ElementProperties[] = [
         new ElementProperties('Placeholder', 'Placeholder', 'text')
     ];
@@ -22,7 +22,6 @@
     {
         return {
             Type: this.Type,
-            Name: this.Name,
             Label: this.Label,
             Placeholder: this.Placeholder
         };
@@ -30,10 +29,6 @@
 
     public Deserialize(data: { [id: string]: string }): void
     {
-        if (data['Name'] !== undefined) {
-            this.Name = data['Name'];
-        }
-
         if (data['Label'] !== undefined) {
             this.Label = data['Label'];
         }

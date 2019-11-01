@@ -1,8 +1,8 @@
 ﻿class FormElementText extends AbstractFormElement
 {
     public Type: string = 'FormElementText';
-    public Name: string;
     public HasLabel: boolean = false;
+    protected IsScoreElement: boolean = false;
     public Properties: ElementProperties[] = [
         new ElementProperties('Value', 'Text', 'textarea')
     ];
@@ -24,24 +24,14 @@
     {
         return {
             Type: this.Type,
-            Name: this.Name,
-            Label: this.Label,
             Value: this.Value
         };
     }
 
     public Deserialize(data: { [id: string]: string }): void
     {
-        if (data['Name'] !== undefined) {
-            this.Name = data['Name'];
-        }
-
-        if (data['Label'] !== undefined) {
-            this.Label = data['Label'];
-        }
-
         if (data['Value'] !== undefined) {
-            this.Value = data['Value'];
+            this.Value = (new ItemSerializer).DeserializeText(data['Value']);
         }
     }
 
