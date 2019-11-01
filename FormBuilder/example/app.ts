@@ -12,6 +12,7 @@
     $('#button-text').on('click', function () { formbuilder.Add(new FormElementText()); });
     $('#button-textarea').on('click', function () { formbuilder.Add(new FormElementTextArea()); });
     $('#button-textinput').on('click', function () { formbuilder.Add(new FormElementTextInput()); });
+    $('#button-score').on('click', function () { formbuilder.Add(new FormElementScore()); });
 
     // Serialize/deserialize
     $('#serialize').on('click', function () { $('#serialized').text(formbuilder.Export()); });
@@ -24,7 +25,8 @@
             new FormElementSelect(),
             new FormElementText(),
             new FormElementTextArea(),
-            new FormElementTextInput()
+            new FormElementTextInput(),
+            new FormElementScore()
         ];
         formbuilder.Import(JSON.parse($('#deserialize-content').val()), formElements);
     });

@@ -21,7 +21,11 @@
             this.AddElement(repository.formElements[i], Number(i));
         }
 
-        $(this._container).sortable({ stop: () => this.Events.Trigger('orderchange') });
+        $(this._container).sortable({
+            axis: "y",
+            forcePlaceholderSize: true,
+            stop: () => this.Events.Trigger('orderchange')
+        });
     }
 
     public GetElementOrder(): Number[]
@@ -118,7 +122,7 @@
             $(component).data('property-id', property.Id);
 
             $(item).find('.formbuilder-optioncontent').append(component);
-            $(component).on('keyup', () => {
+            $(component).on('keyup change', () => {
                 $(result).find('.component').each(function () {
                     element.ProcessValue($(this).data('property-id'), $(this).val());
                 });
