@@ -66,10 +66,6 @@
     <Content Include="example\example.css" />
     <Content Include="example\FormBuilder.css" />
     <Content Include="example\index.html" />
-    <Content Include="formbuilder.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="formbuilder.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
