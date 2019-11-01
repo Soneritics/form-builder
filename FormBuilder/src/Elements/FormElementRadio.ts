@@ -8,7 +8,16 @@
 
     public CreateAndBindDisplayValue()
     {
-        this._binding.text('radiobuttons');
+        this._binding.html('')
+
+        var index = 0;
+        var rnd = Math.random();
+        for (var item of (new ItemSerializer).Serialize(this.Value)) {
+            this._binding.append($('<input type="radio" name="radio-' + rnd + '" id="radio-' + index + '-' + rnd + '">'));
+            this._binding.append($('<label for="radio-' + (index++) + '-' + rnd + '"></label>').text(item.Value));
+            this._binding.append($('<br>'));
+        }
+
         return this._binding;
     }
 

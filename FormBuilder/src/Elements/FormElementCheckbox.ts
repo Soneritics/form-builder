@@ -4,11 +4,20 @@
     public Properties: ElementProperties[] = [
         new ElementProperties('Value', 'Items', 'items')
     ];
-    public Value: string = "id|value";
+    public Value: string = "";
 
     public CreateAndBindDisplayValue()
     {
-        this._binding.text('checkboxes');
+        this._binding.html('')
+
+        var index = 0;
+        var rnd = Math.random();
+        for (var item of (new ItemSerializer).Serialize(this.Value)) {
+            this._binding.append($('<input type="checkbox" name="checkbox-' + rnd + '" id="checkbox-' + index + '-' + rnd + '">'));
+            this._binding.append($('<label for="checkbox-' + (index++) + '-' + rnd + '"></label>').text(item.Value));
+            this._binding.append($('<br>'));
+        }
+
         return this._binding;
     }
 
