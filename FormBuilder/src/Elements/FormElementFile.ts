@@ -2,7 +2,7 @@
     Type = "FormElementFile";
     protected IsScoreElement = false;
     Properties: ElementProperties[] = [
-        new ElementProperties("AllowedExtensions", "Allowed file types", "text")
+        new ElementProperties("AllowedExtensions", "Toegestane bestandstypen", "text")
     ];
     AllowedExtensions = "jpg,jpeg,png";
 

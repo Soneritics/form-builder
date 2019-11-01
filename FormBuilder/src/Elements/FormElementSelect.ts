@@ -4,7 +4,7 @@
     Properties: ElementProperties[] = [
         new ElementProperties("Value", "Items", "items")
     ];
-    Value = "id|value";
+    Value = "";
 
     CreateAndBindDisplayValue() {
         const element = $("<select></select>");

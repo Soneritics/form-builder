@@ -5,7 +5,7 @@
     Properties: ElementProperties[] = [
         new ElementProperties("Value", "Text", "textarea")
     ];
-    Value = "Place text here";
+    Value = "Tekst";
 
     CreateAndBindDisplayValue() {
         this._binding.css("white-space", "pre");
