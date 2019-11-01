@@ -1,40 +1,35 @@
-﻿class FormElementScore extends AbstractFormElement
-{
-    public Type: string = 'FormElementScore';
-    protected IsScoreElement: boolean = false;
-    public Properties: ElementProperties[] = [];
-    public Min: string = "10";
-    public Max: string = "100";
-    public Step: string = "10";
+﻿class FormElementScore extends AbstractFormElement {
+    Type = "FormElementScore";
+    protected IsScoreElement = false;
+    Properties: ElementProperties[] = [];
+    Min = "10";
+    Max = "100";
+    Step = "10";
 
     constructor(data?: { [id: string]: string }) {
         super(data);
 
-        this.Properties.push(new ElementProperties('Min', 'Minimumscore', 'select', this.GetMinItems()));
-        this.Properties.push(new ElementProperties('Max', 'Maximumscore', 'select', this.GetMaxItems()));
-        this.Properties.push(new ElementProperties('Step', 'Stapgrootte', 'select', this.GetStepItems()));
+        this.Properties.push(new ElementProperties("Min", "Minimumscore", "select", this.GetMinItems()));
+        this.Properties.push(new ElementProperties("Max", "Maximumscore", "select", this.GetMaxItems()));
+        this.Properties.push(new ElementProperties("Step", "Stapgrootte", "select", this.GetStepItems()));
     }
 
-    public CreateAndBindDisplayValue()
-    {
-        var element = $('<select></select>');
-        for (var i = +this.Max; i >= +this.Min; i -= +this.Step) {
-            var v = +this.Step < 1 ? (Math.round(i * 10) / 10) : i;
-
-            element.append($('<option></option>').val(v).text(v));
+    CreateAndBindDisplayValue() {
+        const element = $("<select></select>");
+        for (let i = +this.Max; i >= +this.Min; i -= +this.Step) {
+            const v = +this.Step < 1 ? (Math.round(i * 10) / 10) : i;
+            element.append($("<option></option>").val(v).text(v));
         }
 
-        this._binding.html('').append(element);
+        this._binding.html("").append(element);
         return this._binding;
     }
 
-    public New(): AbstractFormElement
-    {
+    New(): AbstractFormElement {
         return new FormElementScore();
     }
 
-    public Serialize(): { [id: string]: string }
-    {
+    Serialize(): { [id: string]: string } {
         return {
             Type: this.Type,
             Mandatory: this.Mandatory,
@@ -46,35 +41,33 @@
         };
     }
 
-    public Deserialize(data: { [id: string]: string }): void
-    {
-        if (data['Label'] !== undefined) {
-            this.Label = data['Label'];
+    Deserialize(data: { [id: string]: string }): void {
+        if (data["Label"] !== undefined) {
+            this.Label = data["Label"];
         }
 
-        if (data['Score'] !== undefined) {
-            this.Score = data['Score'];
+        if (data["Score"] !== undefined) {
+            this.Score = data["Score"];
         }
 
-        if (data['Mandatory'] !== undefined) {
-            this.Mandatory = data['Mandatory'];
+        if (data["Mandatory"] !== undefined) {
+            this.Mandatory = data["Mandatory"];
         }
 
-        if (data['Min'] !== undefined) {
-            this.Min = data['Min'];
+        if (data["Min"] !== undefined) {
+            this.Min = data["Min"];
         }
 
-        if (data['Max'] !== undefined) {
-            this.Max = data['Max'];
+        if (data["Max"] !== undefined) {
+            this.Max = data["Max"];
         }
 
-        if (data['Step'] !== undefined) {
-            this.Step = data['Step'];
+        if (data["Step"] !== undefined) {
+            this.Step = data["Step"];
         }
     }
 
-    private GetMinItems(): { [id: string]: string }
-    {
+    private GetMinItems(): { [id: string]: string } {
         return {
             "0": "0",
             "1": "1",
@@ -83,8 +76,7 @@
         };
     }
 
-    private GetMaxItems(): { [id: string]: string }
-    {
+    private GetMaxItems(): { [id: string]: string } {
         return {
             "1": "1",
             "5": "5",
@@ -93,8 +85,7 @@
         };
     }
 
-    private GetStepItems(): { [id: string]: string }
-    {
+    private GetStepItems(): { [id: string]: string } {
         return {
             "0.1": "0.1",
             "0.5": "0.5",

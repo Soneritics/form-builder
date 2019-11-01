@@ -1,16 +1,14 @@
-﻿body {
-    background-color: silver;
-}
+﻿body { background-color: silver; }
 
 #content {
     background-color: #fff;
-    width: 500px;
     margin-bottom: 50px;
+    width: 500px;
 }
 
 #deserialize-content {
-    width:100%;
     height: 300px;
+    width: 100%;
 }
 
 code {

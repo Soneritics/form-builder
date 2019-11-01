@@ -1,22 +1,18 @@
-﻿class Repository
-{
-    private _formElements: AbstractFormElement[] = new Array<AbstractFormElement>();
-    public Events: EventHandler = new EventHandler();
+﻿class Repository {
+    private _formElements = new Array<AbstractFormElement>();
+    Events = new EventHandler();
 
-    get formElements(): AbstractFormElement[]
-    {
+    get formElements(): AbstractFormElement[] {
         return this._formElements;
     }
 
-    set formElements(elements: AbstractFormElement[])
-    {
+    set formElements(elements: AbstractFormElement[]) {
         this._formElements = elements;
-        this.Events.Trigger('change');
+        this.Events.Trigger("change");
     }
 
-    public Add(element: AbstractFormElement): void
-    {
+    Add(element: AbstractFormElement): void {
         this._formElements.push(element);
-        this.Events.Trigger('change');
+        this.Events.Trigger("change");
     }
 }

@@ -1,25 +1,22 @@
-﻿class FormElementTextArea extends AbstractFormElement
-{
-    public Type: string = 'FormElementTextInput';
-    protected IsScoreElement: boolean = false;
-    public Properties: ElementProperties[] = [
-        new ElementProperties('Placeholder', 'Placeholder', 'text')
+﻿class FormElementTextArea extends AbstractFormElement {
+    Type = "FormElementTextInput";
+    protected IsScoreElement = false;
+    Properties: ElementProperties[] = [
+        new ElementProperties("Placeholder", "Placeholder", "text")
     ];
-    public Placeholder: string = "";
+    Placeholder = "";
 
-    public CreateAndBindDisplayValue()
-    {
-        this._binding.html('<textarea></textarea>');
-        this._binding.find('textarea').attr('placeholder', this.Placeholder);
+    CreateAndBindDisplayValue() {
+        this._binding.html("<textarea></textarea>");
+        this._binding.find("textarea").attr("placeholder", this.Placeholder);
         return this._binding;
     }
 
-    public New(): AbstractFormElement {
+    New(): AbstractFormElement {
         return new FormElementTextArea();
     }
 
-    public Serialize(): { [id: string]: string }
-    {
+    Serialize(): { [id: string]: string } {
         return {
             Type: this.Type,
             Mandatory: this.Mandatory,
@@ -28,18 +25,17 @@
         };
     }
 
-    public Deserialize(data: { [id: string]: string }): void
-    {
-        if (data['Label'] !== undefined) {
-            this.Label = data['Label'];
+    Deserialize(data: { [id: string]: string }): void {
+        if (data["Label"] !== undefined) {
+            this.Label = data["Label"];
         }
 
-        if (data['Placeholder'] !== undefined) {
-            this.Placeholder = data['Placeholder'];
+        if (data["Placeholder"] !== undefined) {
+            this.Placeholder = data["Placeholder"];
         }
 
-        if (data['Mandatory'] !== undefined) {
-            this.Mandatory = data['Mandatory'];
+        if (data["Mandatory"] !== undefined) {
+            this.Mandatory = data["Mandatory"];
         }
     }
 }

@@ -1,14 +1,12 @@
-﻿class Exporter
-{
-    public Export(elements: ISerializable[]): string
-    {
+﻿class Exporter {
+    Export(elements: ISerializable[]): string {
         return JSON.stringify(this.GetSerializedItems(elements), this.escapeJSON);
     }
 
     private GetSerializedItems(elements: ISerializable[]): Array<{ [id: string]: string }> {
-        var result = [];
+        const result = [];
 
-        for (var element of elements) {
+        for (let element of elements) {
             result.push(element.Serialize());
         }
 
@@ -21,13 +19,13 @@
         }
 
         return val
-            .replace(/[\\]/g, '\\\\')
-            .replace(/[\/]/g, '\\/')
-            .replace(/[\b]/g, '\\b')
-            .replace(/[\f]/g, '\\f')
-            .replace(/[\n]/g, '\\n')
-            .replace(/[\r]/g, '\\r')
-            .replace(/[\t]/g, '\\t')
+            .replace(/[\\]/g, "\\\\")
+            .replace(/[\/]/g, "\\/")
+            .replace(/[\b]/g, "\\b")
+            .replace(/[\f]/g, "\\f")
+            .replace(/[\n]/g, "\\n")
+            .replace(/[\r]/g, "\\r")
+            .replace(/[\t]/g, "\\t")
             .replace(/[\"]/g, '\\"')
             .replace(/\\'/g, "\\'");
     };

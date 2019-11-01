@@ -1,25 +1,21 @@
-﻿class FormElementFile extends AbstractFormElement
-{
-    public Type: string = 'FormElementFile';
-    protected IsScoreElement: boolean = false;
-    public Properties: ElementProperties[] = [
-        new ElementProperties('AllowedExtensions', 'Allowed file types', 'text')
+﻿class FormElementFile extends AbstractFormElement {
+    Type = "FormElementFile";
+    protected IsScoreElement = false;
+    Properties: ElementProperties[] = [
+        new ElementProperties("AllowedExtensions", "Allowed file types", "text")
     ];
-    public AllowedExtensions: string = "jpg,jpeg,png";
+    AllowedExtensions = "jpg,jpeg,png";
 
-    public CreateAndBindDisplayValue()
-    {
+    CreateAndBindDisplayValue() {
         this._binding.html('<input type="file">');
         return this._binding;
     }
 
-    public New(): AbstractFormElement
-    {
+    New(): AbstractFormElement {
         return new FormElementFile();
     }
 
-    public Serialize(): { [id: string]: string }
-    {
+    Serialize(): { [id: string]: string } {
         return {
             Type: this.Type,
             Label: this.Label,
@@ -28,18 +24,17 @@
         };
     }
 
-    public Deserialize(data: { [id: string]: string }): void
-    {
-        if (data['Label'] !== undefined) {
-            this.Label = data['Label'];
+    Deserialize(data: { [id: string]: string }): void {
+        if (data["Label"] !== undefined) {
+            this.Label = data["Label"];
         }
 
-        if (data['AllowedExtensions'] !== undefined) {
-            this.AllowedExtensions = data['AllowedExtensions'];
+        if (data["AllowedExtensions"] !== undefined) {
+            this.AllowedExtensions = data["AllowedExtensions"];
         }
 
-        if (data['Mandatory'] !== undefined) {
-            this.Mandatory = data['Mandatory'];
+        if (data["Mandatory"] !== undefined) {
+            this.Mandatory = data["Mandatory"];
         }
     }
 

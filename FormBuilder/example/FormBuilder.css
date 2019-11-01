@@ -5,10 +5,8 @@
 }
 
 .options {
-    padding-bottom: 15px;
     border-bottom: 1px solid #808080;
+    padding-bottom: 15px;
 }
 
-.options .row {
-    padding: 5px;
-}
+.options .row { padding: 5px; }

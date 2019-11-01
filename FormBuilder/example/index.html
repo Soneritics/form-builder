@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Form Builder</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -10,9 +10,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="example.css" type="text/css" />
-    <link rel="stylesheet" href="FormBuilder.css" type="text/css" />
-    
+    <link rel="stylesheet" href="example.css" type="text/css"/>
+    <link rel="stylesheet" href="FormBuilder.css" type="text/css"/>
+
     <script src="../src/Components/Item.js"></script>
     <script src="../src/Components/ItemSerializer.js"></script>
     <script src="../src/Components/EventHandler.js"></script>
@@ -38,7 +38,7 @@
     <script src="../src/Elements/FormElementTextArea.js"></script>
     <script src="../src/Elements/FormElementTextInput.js"></script>
     <script src="../src/Elements/FormElementScore.js"></script>
-    
+
     <script>
         var scoreCategories = {
             "Categorie 1": "Categorie 1",
@@ -50,44 +50,72 @@
     <script src="app.js"></script>
 </head>
 <body>
-    <div class="container"><div class="row"><h1>Form Builder</h1></div></div>
+<div class="container">
+    <div class="row">
+        <h1>Form Builder</h1>
+    </div>
+</div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-md-8">Add elements</div>
-        </div>
-
-        <div class="row">
-            <div id="content" class="col-md-8">&nbsp;</div>
-            <div class="col-md-4">
-                <p><a href="javascript:;" id="button-text" class="btn btn-primary btn-block"><i class="fa fa-comment-o"></i> Text</a></p>
-                <p><a href="javascript:;" id="button-textinput" class="btn btn-primary btn-block"><i class="fa fa-comment"></i> Text input</a></p>
-                <p><a href="javascript:;" id="button-textarea" class="btn btn-primary btn-block"><i class="fa fa-file-text-o"></i> Text area</a></p>
-                <p><a href="javascript:;" id="button-file" class="btn btn-primary btn-block"><i class="fa fa-file-o"></i> File</a></p>
-                <p><a href="javascript:;" id="button-select" class="btn btn-primary btn-block"><i class="fa fa-caret-square-o-down"></i> Select</a></p>
-                <p><a href="javascript:;" id="button-radio" class="btn btn-primary btn-block"><i class="fa fa-dot-circle-o"></i> Radio</a></p>
-                <p><a href="javascript:;" id="button-checkbox" class="btn btn-primary btn-block"><i class="fa fa-check-square-o"></i> Checkbox</a></p>
-                <p><a href="javascript:;" id="button-pageend" class="btn btn-primary btn-block"><i class="fa fa-columns"></i> Page end</a></p>
-                <p><a href="javascript:;" id="button-score" class="btn btn-primary btn-block"><i class="fa fa-star-half-o"></i> Score</a></p>
-            </div>
-        </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-8">Add elements</div>
     </div>
 
-    <p></p>
-
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h2>Serialize</h2>
-                <p><a class="btn btn-success" href="javascript:;" id="serialize">Serialize</a></p>
-                <code id="serialized"></code>
-            </div>
-            <div class="col">
-                <h2>Deserialize</h2>
-                <p><textarea id="deserialize-content"></textarea></p>
-                <p><a class="btn btn-success" href="javascript:;" id="deserialize">Deserialize</a></p>
-            </div>
+    <div class="row">
+        <div id="content" class="col-md-8">&nbsp;</div>
+        <div class="col-md-4">
+            <p>
+                <a href="javascript:;" id="button-text" class="btn btn-primary btn-block"><i class="fa fa-comment-o"></i> Text</a>
+            </p>
+            <p>
+                <a href="javascript:;" id="button-textinput" class="btn btn-primary btn-block"><i class="fa fa-comment"></i> Text input</a>
+            </p>
+            <p>
+                <a href="javascript:;" id="button-textarea" class="btn btn-primary btn-block"><i class="fa fa-file-text-o"></i> Text area</a>
+            </p>
+            <p>
+                <a href="javascript:;" id="button-file" class="btn btn-primary btn-block"><i class="fa fa-file-o"></i> File</a>
+            </p>
+            <p>
+                <a href="javascript:;" id="button-select" class="btn btn-primary btn-block"><i class="fa fa-caret-square-o-down"></i> Select</a>
+            </p>
+            <p>
+                <a href="javascript:;" id="button-radio" class="btn btn-primary btn-block"><i class="fa fa-dot-circle-o"></i> Radio</a>
+            </p>
+            <p>
+                <a href="javascript:;" id="button-checkbox" class="btn btn-primary btn-block"><i class="fa fa-check-square-o"></i> Checkbox</a>
+            </p>
+            <p>
+                <a href="javascript:;" id="button-pageend" class="btn btn-primary btn-block"><i class="fa fa-columns"></i> Page end</a>
+            </p>
+            <p>
+                <a href="javascript:;" id="button-score" class="btn btn-primary btn-block"><i class="fa fa-star-half-o"></i> Score</a>
+            </p>
         </div>
     </div>
+</div>
+
+<p></p>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Serialize</h2>
+            <p>
+                <a class="btn btn-success" href="javascript:;" id="serialize">Serialize</a>
+            </p>
+            <code id="serialized"></code>
+        </div>
+        <div class="col">
+            <h2>Deserialize</h2>
+            <p>
+                <textarea id="deserialize-content"></textarea>
+            </p>
+            <p>
+                <a class="btn btn-success" href="javascript:;" id="deserialize">Deserialize</a>
+            </p>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,4 +1,3 @@
-﻿class NullLogger implements ILogger
-{
-    Log(message: any): void { }
+﻿class NullLogger implements ILogger {
+    Log(message: any): void {}
 }

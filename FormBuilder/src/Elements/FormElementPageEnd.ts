@@ -1,29 +1,24 @@
-﻿class FormElementPageEnd extends AbstractFormElement
-{
-    public Type: string = 'FormElementPageEnd';
-    public HasLabel: boolean = false;
-    public Properties: ElementProperties[] = [];
-    protected IsScoreElement: boolean = false;
+﻿class FormElementPageEnd extends AbstractFormElement {
+    Type = "FormElementPageEnd";
+    HasLabel = false;
+    Properties: ElementProperties[] = [];
+    protected IsScoreElement = false;
 
-    public CreateAndBindDisplayValue()
-    {
-        this._binding.html('<hr>');
+    CreateAndBindDisplayValue() {
+        this._binding.html("<hr>");
         return this._binding;
     }
 
-    public New(): AbstractFormElement
-    {
+    New(): AbstractFormElement {
         return new FormElementPageEnd();
     }
 
-    public Serialize(): { [id: string]: string }
-    {
+    Serialize(): { [id: string]: string } {
         return {
             Type: this.Type
         };
     }
 
-    public Deserialize(data: { [id: string]: string }): void
-    {
+    Deserialize(data: { [id: string]: string }): void {
     }
 }
