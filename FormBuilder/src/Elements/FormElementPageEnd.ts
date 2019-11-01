@@ -26,5 +26,4 @@
     public Deserialize(data: { [id: string]: string }): void
     {
     }
-
 }

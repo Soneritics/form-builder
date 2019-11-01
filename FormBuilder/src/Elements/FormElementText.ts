@@ -33,6 +33,9 @@
         if (data['Value'] !== undefined) {
             this.Value = (new ItemSerializer).DeserializeText(data['Value']);
         }
-    }
 
+        if (data['Mandatory'] !== undefined) {
+            this.Mandatory = data['Mandatory'];
+        }
+    }
 }

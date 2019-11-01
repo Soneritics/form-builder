@@ -23,6 +23,7 @@
         return {
             Type: this.Type,
             Label: this.Label,
+            Mandatory: this.Mandatory,
             Placeholder: this.Placeholder
         };
     }
@@ -36,6 +37,9 @@
         if (data['Placeholder'] !== undefined) {
             this.Placeholder = data['Placeholder'];
         }
-    }
 
+        if (data['Mandatory'] !== undefined) {
+            this.Mandatory = data['Mandatory'];
+        }
+    }
 }

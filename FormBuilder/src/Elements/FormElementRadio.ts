@@ -49,5 +49,9 @@
         if (data['Label'] !== undefined) {
             this.Label = data['Label'];
         }
+
+        if (data['Mandatory'] !== undefined) {
+            this.Mandatory = data['Mandatory'];
+        }
     }
 }

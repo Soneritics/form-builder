@@ -36,6 +36,10 @@
         if (data['AllowedExtensions'] !== undefined) {
             this.AllowedExtensions = data['AllowedExtensions'];
         }
+
+        if (data['Mandatory'] !== undefined) {
+            this.Mandatory = data['Mandatory'];
+        }
     }
 
 }

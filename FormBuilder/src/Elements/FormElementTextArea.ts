@@ -36,6 +36,9 @@
         if (data['Placeholder'] !== undefined) {
             this.Placeholder = data['Placeholder'];
         }
-    }
 
+        if (data['Mandatory'] !== undefined) {
+            this.Mandatory = data['Mandatory'];
+        }
+    }
 }

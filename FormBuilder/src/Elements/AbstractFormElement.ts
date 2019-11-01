@@ -7,6 +7,7 @@
 
     public Properties: ElementProperties[];
     public Score: string;
+    public Mandatory: string = "0";
     public Label: string = 'Label';
     public HasLabel: boolean = true;
     protected IsScoreElement: boolean = true;
@@ -50,6 +51,10 @@
 
         if (this.HasLabel) {
             result.push(new ElementProperties('Label', 'Label', 'text'));
+
+            if (this.Type !== "FormElementSelect") {
+                result.push(new ElementProperties('Mandatory', 'Verplicht', 'select', { "0": "Nee", "1": "Ja" }));
+            }
         }
 
         return result;
