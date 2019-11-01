@@ -22,6 +22,7 @@
     {
         return {
             Type: this.Type,
+            Mandatory: this.Mandatory,
             Label: this.Label,
             Placeholder: this.Placeholder
         };

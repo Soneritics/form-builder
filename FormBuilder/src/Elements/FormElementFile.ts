@@ -23,6 +23,7 @@
         return {
             Type: this.Type,
             Label: this.Label,
+            Mandatory: this.Mandatory,
             AllowedExtensions: this.AllowedExtensions
         };
     }

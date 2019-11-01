@@ -31,6 +31,7 @@
         return {
             Type: this.Type,
             Score: this.Score,
+            Mandatory: this.Mandatory,
             Label: this.Label,
             Value: this.Value
         };

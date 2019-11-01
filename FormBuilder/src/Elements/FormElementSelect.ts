@@ -28,6 +28,7 @@
     {
         return {
             Type: this.Type,
+            Mandatory: this.Mandatory,
             Score: this.Score,
             Label: this.Label,
             Value: this.Value

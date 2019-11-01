@@ -24,6 +24,7 @@
     {
         return {
             Type: this.Type,
+            Mandatory: this.Mandatory,
             Value: this.Value
         };
     }
