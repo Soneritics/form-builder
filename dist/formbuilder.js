@@ -280,12 +280,13 @@ var Repository = (function () {
     return Repository;
 }());
 var AbstractFormElement = (function () {
-    function AbstractFormElement(data) {
+    function AbstractFormElement(scores, data) {
         this.Mandatory = "0";
         this.Label = "Label";
         this.HasLabel = true;
         this.IsScoreElement = true;
         this._binding = $("<span></span>");
+        this.Scores = scores;
         if (data !== undefined && data != null) {
             this.Deserialize(data);
         }
@@ -304,7 +305,7 @@ var AbstractFormElement = (function () {
     AbstractFormElement.prototype.GetDefaultProperties = function () {
         var result = [];
         if (this.IsScoreElement) {
-            result.push(new ElementProperties("Score", "Scorecategorie", "select", { een: "een", twee: "twee" }));
+            result.push(new ElementProperties("Score", "Scorecategorie", "select", this.Scores));
         }
         if (this.HasLabel) {
             result.push(new ElementProperties("Label", "Label", "text"));
@@ -352,7 +353,7 @@ var FormElementCheckbox = (function (_super) {
         return this._binding;
     };
     FormElementCheckbox.prototype.New = function () {
-        return new FormElementCheckbox();
+        return new FormElementCheckbox(this.Scores);
     };
     FormElementCheckbox.prototype.Serialize = function () {
         return {
@@ -396,7 +397,7 @@ var FormElementFile = (function (_super) {
         return this._binding;
     };
     FormElementFile.prototype.New = function () {
-        return new FormElementFile();
+        return new FormElementFile(this.Scores);
     };
     FormElementFile.prototype.Serialize = function () {
         return {
@@ -434,7 +435,7 @@ var FormElementPageEnd = (function (_super) {
         return this._binding;
     };
     FormElementPageEnd.prototype.New = function () {
-        return new FormElementPageEnd();
+        return new FormElementPageEnd(this.Scores);
     };
     FormElementPageEnd.prototype.Serialize = function () {
         return {
@@ -469,7 +470,7 @@ var FormElementRadio = (function (_super) {
         return this._binding;
     };
     FormElementRadio.prototype.New = function () {
-        return new FormElementRadio();
+        return new FormElementRadio(this.Scores);
     };
     FormElementRadio.prototype.Serialize = function () {
         return {
@@ -521,7 +522,7 @@ var FormElementScore = (function (_super) {
         return this._binding;
     };
     FormElementScore.prototype.New = function () {
-        return new FormElementScore();
+        return new FormElementScore(this.Scores);
     };
     FormElementScore.prototype.Serialize = function () {
         return {
@@ -603,7 +604,7 @@ var FormElementSelect = (function (_super) {
         return this._binding;
     };
     FormElementSelect.prototype.New = function () {
-        return new FormElementSelect();
+        return new FormElementSelect(this.Scores);
     };
     FormElementSelect.prototype.Serialize = function () {
         return {
@@ -649,7 +650,7 @@ var FormElementText = (function (_super) {
         return this._binding;
     };
     FormElementText.prototype.New = function () {
-        return new FormElementText();
+        return new FormElementText(this.Scores);
     };
     FormElementText.prototype.Serialize = function () {
         return {
@@ -686,7 +687,7 @@ var FormElementTextArea = (function (_super) {
         return this._binding;
     };
     FormElementTextArea.prototype.New = function () {
-        return new FormElementTextArea();
+        return new FormElementTextArea(this.Scores);
     };
     FormElementTextArea.prototype.Serialize = function () {
         return {
@@ -727,7 +728,7 @@ var FormElementTextInput = (function (_super) {
         return this._binding;
     };
     FormElementTextInput.prototype.New = function () {
-        return new FormElementTextInput();
+        return new FormElementTextInput(this.Scores);
     };
     FormElementTextInput.prototype.Serialize = function () {
         return {
