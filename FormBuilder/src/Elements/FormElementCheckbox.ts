@@ -20,7 +20,7 @@
     }
 
     New(): AbstractFormElement {
-        return new FormElementCheckbox();
+        return new FormElementCheckbox(this.Scores);
     }
 
     Serialize(): { [id: string]: string } {

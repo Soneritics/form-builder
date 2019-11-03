@@ -10,7 +10,7 @@
     }
 
     New(): AbstractFormElement {
-        return new FormElementPageEnd();
+        return new FormElementPageEnd(this.Scores);
     }
 
     Serialize(): { [id: string]: string } {

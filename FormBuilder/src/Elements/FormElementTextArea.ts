@@ -13,7 +13,7 @@
     }
 
     New(): AbstractFormElement {
-        return new FormElementTextArea();
+        return new FormElementTextArea(this.Scores);
     }
 
     Serialize(): { [id: string]: string } {

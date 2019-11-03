@@ -18,7 +18,7 @@
     }
 
     New(): AbstractFormElement {
-        return new FormElementSelect();
+        return new FormElementSelect(this.Scores);
     }
 
     Serialize(): { [id: string]: string } {

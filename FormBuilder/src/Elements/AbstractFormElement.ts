@@ -12,13 +12,16 @@
     HasLabel = true;
     protected IsScoreElement = true;
     protected _binding = $("<span></span>");
+    protected Scores: { [id: string]: string };
     private _label;
 
     abstract CreateAndBindDisplayValue();
 
     abstract New(): AbstractFormElement;
 
-    constructor(data?: { [id: string]: string }) {
+    constructor(scores: { [id: string]: string }, data?: { [id: string]: string }) {
+        this.Scores = scores;
+
         if (data !== undefined && data != null) {
             this.Deserialize(data);
         }
@@ -42,7 +45,7 @@
         const result: ElementProperties[] = [];
 
         if (this.IsScoreElement) {
-            result.push(new ElementProperties("Score", "Scorecategorie", "select", { een: "een", twee: "twee" }));
+            result.push(new ElementProperties("Score", "Scorecategorie", "select", this.Scores));
         }
 
         if (this.HasLabel) {

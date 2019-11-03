@@ -20,7 +20,7 @@
     }
 
     New(): AbstractFormElement {
-        return new FormElementRadio();
+        return new FormElementRadio(this.Scores);
     }
 
     Serialize(): { [id: string]: string } {
