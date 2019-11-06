@@ -130,7 +130,7 @@ var UI = (function () {
             $(row).find(".toggler > a > span").hide();
         }
         $(this._container).append(row);
-        this.Events.Trigger("ElementAdded", row);
+        this.Events.Trigger("ElementAdded", element);
     };
     UI.prototype.GetOptionsForm = function (element) {
         var properties = element.GetDefaultProperties().concat(element.Properties);
