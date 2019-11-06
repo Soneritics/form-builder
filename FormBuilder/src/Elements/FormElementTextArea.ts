@@ -1,5 +1,5 @@
 ﻿class FormElementTextArea extends AbstractFormElement {
-    Type = "FormElementTextInput";
+    Type = "FormElementTextArea";
     protected IsScoreElement = false;
     Properties: ElementProperties[] = [
         new ElementProperties("Placeholder", "Placeholder", "text")
