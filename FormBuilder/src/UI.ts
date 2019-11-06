@@ -76,6 +76,7 @@
         }
 
         $(this._container).append(row);
+        this.Events.Trigger("ElementAdded", row);
     }
 
     private GetOptionsForm(element: AbstractFormElement) {
