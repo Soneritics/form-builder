@@ -72,6 +72,7 @@
     <TypeScriptCompile Include="src\Elements\FormElementRadio.ts" />
     <TypeScriptCompile Include="src\Elements\FormElementScore.ts" />
     <TypeScriptCompile Include="src\Elements\FormElementSelect.ts" />
+    <TypeScriptCompile Include="src\Elements\FormElementHtml.ts" />
     <TypeScriptCompile Include="src\Elements\FormElementText.ts" />
     <TypeScriptCompile Include="src\Elements\FormElementTextArea.ts" />
     <TypeScriptCompile Include="src\Elements\FormElementTextInput.ts" />

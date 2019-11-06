@@ -15,6 +15,7 @@
     $("#button-pageend").on("click", function () { formbuilder.Add(new FormElementPageEnd(scoreCategories)); });
     $("#button-radio").on("click", function () { formbuilder.Add(new FormElementRadio(scoreCategories)); });
     $("#button-select").on("click", function () { formbuilder.Add(new FormElementSelect(scoreCategories)); });
+    $("#button-html").on("click", function () { formbuilder.Add(new FormElementHtml(scoreCategories)); });
     $("#button-text").on("click", function () { formbuilder.Add(new FormElementText(scoreCategories)); });
     $("#button-textarea").on("click", function () { formbuilder.Add(new FormElementTextArea(scoreCategories)); });
     $("#button-textinput").on("click", function () { formbuilder.Add(new FormElementTextInput(scoreCategories)); });
@@ -31,6 +32,7 @@
                 new FormElementRadio(scoreCategories),
                 new FormElementSelect(scoreCategories),
                 new FormElementText(scoreCategories),
+                new FormElementHtml(scoreCategories),
                 new FormElementTextArea(scoreCategories),
                 new FormElementTextInput(scoreCategories),
                 new FormElementScore(scoreCategories)
