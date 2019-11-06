@@ -130,6 +130,7 @@ var UI = (function () {
             $(row).find(".toggler > a > span").hide();
         }
         $(this._container).append(row);
+        this.Events.Trigger("ElementAdded", row);
     };
     UI.prototype.GetOptionsForm = function (element) {
         var properties = element.GetDefaultProperties().concat(element.Properties);
@@ -420,6 +421,39 @@ var FormElementFile = (function (_super) {
     };
     return FormElementFile;
 }(AbstractFormElement));
+var FormElementHtml = (function (_super) {
+    __extends(FormElementHtml, _super);
+    function FormElementHtml() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.Type = "FormElementHtml";
+        _this.HasLabel = false;
+        _this.IsScoreElement = false;
+        _this.Properties = [
+            new ElementProperties("Value", "Tekst", "textarea")
+        ];
+        _this.Value = "Tekst";
+        return _this;
+    }
+    FormElementHtml.prototype.CreateAndBindDisplayValue = function () {
+        this._binding.html(this.Value);
+        return this._binding;
+    };
+    FormElementHtml.prototype.New = function () {
+        return new FormElementHtml(this.Scores);
+    };
+    FormElementHtml.prototype.Serialize = function () {
+        return {
+            Type: this.Type,
+            Value: this.Value
+        };
+    };
+    FormElementHtml.prototype.Deserialize = function (data) {
+        if (data["Value"] !== undefined) {
+            this.Value = (new ItemSerializer).DeserializeText(data["Value"]);
+        }
+    };
+    return FormElementHtml;
+}(AbstractFormElement));
 var FormElementPageEnd = (function (_super) {
     __extends(FormElementPageEnd, _super);
     function FormElementPageEnd() {
@@ -673,7 +707,7 @@ var FormElementTextArea = (function (_super) {
     __extends(FormElementTextArea, _super);
     function FormElementTextArea() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.Type = "FormElementTextInput";
+        _this.Type = "FormElementTextArea";
         _this.IsScoreElement = false;
         _this.Properties = [
             new ElementProperties("Placeholder", "Placeholder", "text")
@@ -779,7 +813,6 @@ var Exporter = (function () {
         }
         return val
             .replace(/[\\]/g, "\\\\")
-            .replace(/[\/]/g, "\\/")
             .replace(/[\b]/g, "\\b")
             .replace(/[\f]/g, "\\f")
             .replace(/[\n]/g, "\\n")
