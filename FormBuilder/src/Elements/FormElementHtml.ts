@@ -9,6 +9,7 @@
 
     CreateAndBindDisplayValue() {
         this._binding.html(this.Value);
+        this._binding.addClass('FormElementHtml');
         return this._binding;
     }
 

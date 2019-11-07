@@ -436,6 +436,7 @@ var FormElementHtml = (function (_super) {
     }
     FormElementHtml.prototype.CreateAndBindDisplayValue = function () {
         this._binding.html(this.Value);
+        this._binding.addClass('FormElementHtml');
         return this._binding;
     };
     FormElementHtml.prototype.New = function () {
