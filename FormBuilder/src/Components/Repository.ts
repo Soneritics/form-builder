@@ -15,4 +15,9 @@
         this._formElements.push(element);
         this.Events.Trigger("change");
     }
+
+    Remove(index: number): void {
+        this._formElements.splice(index, 1);
+        this.Events.Trigger("change");
+    }
 }

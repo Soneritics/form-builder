@@ -23,6 +23,7 @@ var FormBuilder = (function () {
         this._logger.Log("FormBuilder - Constructing");
         this._repository.Events.On("change", function (data) { return _this.OnRepositoryChange(data); });
         this._ui.Events.On("orderchange", function () { return _this.OnOrderChange(); });
+        this._ui.Events.On("InitializeDeletion", function (data) { return _this.DeleteElement(data); });
         if (formElements !== undefined && formElements.length > 0) {
             this._logger.Log("FormBuilder - Loading form elements");
             this._repository.formElements = formElements;
@@ -51,6 +52,11 @@ var FormBuilder = (function () {
         this._logger.Log("FormBuilder - OnRepositoryChange, building UI");
         this._ui.Build(this._repository);
         this._logger.Log(data);
+    };
+    FormBuilder.prototype.DeleteElement = function (data) {
+        this._logger.Log("FormBuilder - InitializeDeletion");
+        this._logger.Log(data);
+        this._repository.Remove(data.repositoryIndex);
     };
     FormBuilder.prototype.OnOrderChange = function () {
         this._logger.Log("FormBuilder - OnOrderChange");
@@ -96,11 +102,11 @@ var UI = (function () {
     UI.prototype.AddElement = function (element, repositoryIndex) {
         var row = $("<div class=\"row draggable\" data-index=\"" + repositoryIndex + "\"><div class=\"container\"><div class=\"row wysiwyg\"></div><div class=\"row options\"></div></div></div>");
         if (element.HasLabel) {
-            $(row).find(".wysiwyg").html('<div class="col-4"><div class="row"><div class="col-1 toggler"></div><div class="col label"></div></div></div><div class="col-sm-7 value"></div>');
+            $(row).find(".wysiwyg").html('<div class="col-4"><div class="row"><div class="col-1 toggler"></div><div class="col label"></div></div></div><div class="col-sm-7 value"></div><div class="col-sm-1 text-right remover"></div>');
             element.SetLabel($(row).find(".label"));
         }
         else {
-            $(row).find(".wysiwyg").html('<div class="col-1 toggler"></div><div class="col value"></div>');
+            $(row).find(".wysiwyg").html('<div class="col-1 toggler"></div><div class="col value"></div><div class="col-1 text-right remover"></div>');
         }
         $(row).find(".value").append(element.CreateAndBindDisplayValue());
         $(row).find(".toggler")
@@ -119,6 +125,12 @@ var UI = (function () {
                     $(this).show();
                 }
             });
+        });
+        var self = this;
+        $(row).find(".remover")
+            .html('<a href="javascript:;"><i class="fa fa-trash"></i></a>')
+            .find("a").on("click", function () {
+            self.Events.Trigger('InitializeDeletion', { repositoryIndex: repositoryIndex });
         });
         $(row).find(".toggler > a > span:last-child").hide();
         var optionsForm = this.GetOptionsForm(element);
@@ -276,6 +288,10 @@ var Repository = (function () {
     });
     Repository.prototype.Add = function (element) {
         this._formElements.push(element);
+        this.Events.Trigger("change");
+    };
+    Repository.prototype.Remove = function (index) {
+        this._formElements.splice(index, 1);
         this.Events.Trigger("change");
     };
     return Repository;

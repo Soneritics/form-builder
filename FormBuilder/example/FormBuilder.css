@@ -10,3 +10,12 @@
 }
 
 .options .row { padding: 5px; }
+
+.remover > * {
+    display: none;
+    color: red !important;
+}
+
+.wysiwyg:hover .remover > * {
+    display: block;
+}

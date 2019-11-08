@@ -38,10 +38,10 @@
         var row = $(`<div class="row draggable" data-index="${repositoryIndex}"><div class="container"><div class="row wysiwyg"></div><div class="row options"></div></div></div>`);
 
         if (element.HasLabel) {
-            $(row).find(".wysiwyg").html('<div class="col-4"><div class="row"><div class="col-1 toggler"></div><div class="col label"></div></div></div><div class="col-sm-7 value"></div>');
+            $(row).find(".wysiwyg").html('<div class="col-4"><div class="row"><div class="col-1 toggler"></div><div class="col label"></div></div></div><div class="col-sm-7 value"></div><div class="col-sm-1 text-right remover"></div>');
             element.SetLabel($(row).find(".label"));
         } else {
-            $(row).find(".wysiwyg").html('<div class="col-1 toggler"></div><div class="col value"></div>');
+            $(row).find(".wysiwyg").html('<div class="col-1 toggler"></div><div class="col value"></div><div class="col-1 text-right remover"></div>');
         }
 
         $(row).find(".value").append(element.CreateAndBindDisplayValue());
@@ -64,6 +64,13 @@
                         }
                     });
                 });
+
+        var self = this;
+        $(row).find(".remover")
+            .html('<a href="javascript:;"><i class="fa fa-trash"></i></a>')
+            .find("a").on("click", function() {
+                self.Events.Trigger('InitializeDeletion', {repositoryIndex: repositoryIndex});
+            });
 
         $(row).find(".toggler > a > span:last-child").hide();
 

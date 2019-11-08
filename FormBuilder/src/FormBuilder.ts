@@ -13,6 +13,7 @@
         this._logger.Log("FormBuilder - Constructing");
         this._repository.Events.On("change", (data?: any) => this.OnRepositoryChange(data));
         this._ui.Events.On("orderchange", () => this.OnOrderChange());
+        this._ui.Events.On("InitializeDeletion", (data?: any) => this.DeleteElement(data));
 
         if (formElements !== undefined && formElements.length > 0) {
             this._logger.Log("FormBuilder - Loading form elements");
@@ -47,6 +48,12 @@
         this._logger.Log("FormBuilder - OnRepositoryChange, building UI");
         this._ui.Build(this._repository);
         this._logger.Log(data);
+    }
+
+    private DeleteElement(data?: any): void {
+        this._logger.Log("FormBuilder - InitializeDeletion");
+        this._logger.Log(data);
+        this._repository.Remove(data.repositoryIndex);
     }
 
     private OnOrderChange(): void {
