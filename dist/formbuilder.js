@@ -553,7 +553,7 @@ var FormElementScore = (function (_super) {
     function FormElementScore(data) {
         var _this = _super.call(this, data) || this;
         _this.Type = "FormElementScore";
-        _this.IsScoreElement = false;
+        _this.IsScoreElement = true;
         _this.Properties = [];
         _this.Min = "10";
         _this.Max = "100";

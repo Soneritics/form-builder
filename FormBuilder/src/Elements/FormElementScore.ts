@@ -1,6 +1,6 @@
 ﻿class FormElementScore extends AbstractFormElement {
     Type = "FormElementScore";
-    protected IsScoreElement = false;
+    protected IsScoreElement = true;
     Properties: ElementProperties[] = [];
     Min = "10";
     Max = "100";
