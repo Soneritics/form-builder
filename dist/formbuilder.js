@@ -471,6 +471,39 @@ var FormElementHtml = (function (_super) {
     };
     return FormElementHtml;
 }(AbstractFormElement));
+var FormElementImage = (function (_super) {
+    __extends(FormElementImage, _super);
+    function FormElementImage() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.Type = "FormElementImage";
+        _this.IsScoreElement = false;
+        _this.Properties = [];
+        return _this;
+    }
+    FormElementImage.prototype.CreateAndBindDisplayValue = function () {
+        this._binding.html('<input type="file">');
+        return this._binding;
+    };
+    FormElementImage.prototype.New = function () {
+        return new FormElementImage(this.Scores);
+    };
+    FormElementImage.prototype.Serialize = function () {
+        return {
+            Type: this.Type,
+            Label: this.Label,
+            Mandatory: this.Mandatory
+        };
+    };
+    FormElementImage.prototype.Deserialize = function (data) {
+        if (data["Label"] !== undefined) {
+            this.Label = data["Label"];
+        }
+        if (data["Mandatory"] !== undefined) {
+            this.Mandatory = data["Mandatory"];
+        }
+    };
+    return FormElementImage;
+}(AbstractFormElement));
 var FormElementPageEnd = (function (_super) {
     __extends(FormElementPageEnd, _super);
     function FormElementPageEnd() {

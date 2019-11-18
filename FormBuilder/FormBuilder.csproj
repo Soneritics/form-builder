@@ -77,6 +77,7 @@
     <TypeScriptCompile Include="src\Elements\FormElementTextArea.ts" />
     <TypeScriptCompile Include="src\Elements\FormElementTextInput.ts" />
     <TypeScriptCompile Include="src\Elements\FormElementFile.ts" />
+    <TypeScriptCompile Include="src\Elements\FormElementImage.ts" />
     <TypeScriptCompile Include="src\Modules\ConsoleLogger.ts" />
     <TypeScriptCompile Include="src\Components\EventHandler.ts" />
     <TypeScriptCompile Include="src\Modules\Exporter.ts" />

@@ -12,6 +12,7 @@
     // Buttons to create form elements
     $("#button-checkbox").on("click", function () { formbuilder.Add(new FormElementCheckbox(scoreCategories)); });
     $("#button-file").on("click", function () { formbuilder.Add(new FormElementFile(scoreCategories)); });
+    $("#button-image").on("click", function () { formbuilder.Add(new FormElementImage(scoreCategories)); });
     $("#button-pageend").on("click", function () { formbuilder.Add(new FormElementPageEnd(scoreCategories)); });
     $("#button-radio").on("click", function () { formbuilder.Add(new FormElementRadio(scoreCategories)); });
     $("#button-select").on("click", function () { formbuilder.Add(new FormElementSelect(scoreCategories)); });
@@ -28,6 +29,7 @@
             const formElements: AbstractFormElement[] = [
                 new FormElementCheckbox(scoreCategories),
                 new FormElementFile(scoreCategories),
+                new FormElementImage(scoreCategories),
                 new FormElementPageEnd(scoreCategories),
                 new FormElementRadio(scoreCategories),
                 new FormElementSelect(scoreCategories),
