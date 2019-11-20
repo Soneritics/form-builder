@@ -22,8 +22,6 @@
     }
 
     DeserializeText(content: string): string {
-        console.log(`original: ${content}`);
-        console.log(`replaced: ${this.replaceAll(this.replaceAll(content, "\\n", "\n"), "\\r", "")}`);
         return this.replaceAll(this.replaceAll(content, "\\n", "\n"), "\\r", "");
     }
 
