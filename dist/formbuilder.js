@@ -255,7 +255,7 @@ var ItemSerializer = (function () {
         return result;
     };
     ItemSerializer.prototype.DeserializeText = function (content) {
-        return this.replaceAll(this.replaceAll(content, "\\n", "\n"), "\\r", "");
+        return this.replaceAll(this.replaceAll(this.replaceAll(content, "\\\"", "\""), "\\n", "\n"), "\\r", "")
     };
     ItemSerializer.prototype.replaceAll = function (content, find, replace) {
         var replacement = content;
