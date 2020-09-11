@@ -22,7 +22,7 @@
     }
 
     DeserializeText(content: string): string {
-        return this.replaceAll(this.replaceAll(content, "\\n", "\n"), "\\r", "");
+        return this.replaceAll(this.replaceAll(this.replaceAll(content, "\\\"", "\""), "\\n", "\n"), "\\r", "")
     }
 
     private replaceAll(content: string, find: string, replace: string): string {
